@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AEON Web Engineer Assessment
 
-## Getting Started
+This project contains solutions for the AEON web engineer assessment challenges, including a multi-step login flow with MFA, and a transaction dashboard.
 
-First, run the development server:
+## Prerequisites
 
-```bash
+- Node.js (Recommended v18+)
+- npm or yarn
+
+## Installation and Setup
+
+1. Install dependencies:
+- npm install or yarn install
+
+## Running the Development Server
+
+Start the Next.js development server:
 npm run dev
-# or
+or 
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app will be available at [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Pages & APIs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Login flow**: [http://localhost:3000/login](http://localhost:3000/login)
+  - Multi-step login form
+  - Calls APIs for secure word generation, login, and MFA verification
 
-## Learn More
+- **Transaction Dashboard**: [http://localhost:3000/dashboard](http://localhost:3000/dashboard)
+  - Displays transactions fetched from `/api/transaction-history`
 
-To learn more about Next.js, take a look at the following resources:
+- **API Endpoints**:
+  - `POST /api/getSecureWord`: generate secure word for username
+  - `POST /api/login`: login with username, secure word, hashed password
+  - `POST /api/verifyMfa`: verify MFA 6-digit code
+  - `GET  /api/transaction-history`: fetch transaction data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- The backend uses in-memory data stores and mock implementations for demonstration.
+- Passwords are hashed client-side but no real authentication is done.
+- MFA code is simulated as '123456'.
+- JWT token is mocked and stored in localStorage.
+- For production, replace in-memory stores with a persistent database/cache.
 
-## Deploy on Vercel
+## Build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To create an optimized production build:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+npm run build
+npm start
+
+
+
+
